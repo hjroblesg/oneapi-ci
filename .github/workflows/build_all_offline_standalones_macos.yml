@@ -1,0 +1,162 @@
+# SPDX-FileCopyrightText: 2020 Intel Corporation
+#
+# SPDX-License-Identifier: MIT
+
+name: build_macos_offline_standalones
+
+on:
+  push: {}
+  workflow_dispatch: {}
+  schedule:
+    - cron: '0 0 * * *'
+
+env:
+  MACOS_ISPC_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/fd7d2ab7-821f-4819-9517-87fbe29690e5/m_ispc_p_2023.2.0.49482_offline.dmg
+  MACOS_EMBREE_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/dd37fca9-4a4d-44aa-8a62-d6607bcba698/m_embree_p_2023.2.0.49419_offline.dmg
+  MACOS_OIDN_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/2eea4397-5b4e-42e9-80cc-c4d18d9d175f/m_oidn_p_2023.2.0.49419_offline.dmg
+  MACOS_OPGL_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/313d8b1d-4050-4ad6-ad43-5ecc008f6f95/m_openpgl_p_2023.2.0.49413_offline.dmg
+  MACOS_OVKL_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/f5d4165c-2549-45ef-8a01-cce00faa26ec/m_openvkl_p_2023.2.0.49401_offline.dmg
+  MACOS_OSPRAY_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/88d9fcf8-18f3-416a-9e01-00e33bd85dc4/m_ospray_p_2023.2.0.49394_offline.dmg
+  MACOS_OSPRAYSTD_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/84e00915-9ae4-411f-8cda-d06522bc49f7/m_ospray_studio_p_2023.2.0.49380_offline.dmg
+  SAMPLES_TAG: 2024.0.0
+
+jobs:
+  build_macos_ispc:
+    runs-on: macos-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: install_ispc
+      run: scripts/install_macos.sh $MACOS_ISPC_URL
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          bootstrapper*
+          installer*
+        retention-days: 7
+
+  build_macos_embree:
+    runs-on: macos-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: install_embree
+      run: scripts/install_macos.sh $MACOS_EMBREE_URL
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          bootstrapper*
+          installer*
+        retention-days: 7
+
+  build_macos_oidn:
+    runs-on: macos-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: install_oidn
+      run: scripts/install_macos.sh $MACOS_OIDN_URL
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          bootstrapper*
+          installer*
+        retention-days: 7
+
+  build_macos_openpgl:
+    runs-on: macos-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: install_openpgl
+      run: scripts/install_macos.sh $MACOS_OPGL_URL
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          bootstrapper*
+          installer*
+        retention-days: 7
+
+  build_macos_openvkl:
+    runs-on: macos-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: install_openvkl
+      run: scripts/install_macos.sh $MACOS_OVKL_URL
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          bootstrapper*
+          installer*
+        retention-days: 7
+
+  build_macos_ospray:
+    runs-on: macos-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: install_ospray
+      run: scripts/install_macos.sh $MACOS_OSPRAY_URL
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          bootstrapper*
+          installer*
+        retention-days: 7
+
+  build_macos_ospraystd:
+    runs-on: macos-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: install_ospraystd
+      run: scripts/install_macos.sh $MACOS_OSPRAYSTD_URL
+    - name: Saving install logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: InstallLogs_${{ github.job }}
+        path: |
+          bootstrapper*
+          installer*
+        retention-days: 7

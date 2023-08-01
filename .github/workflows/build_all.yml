@@ -5,7 +5,11 @@
 name: build_all
 permissions: read-all
 
-on: push
+on:
+  push: {}
+  workflow_dispatch: {}
+  schedule:
+    - cron: '0 0 * * *'
 
 env:
   WINDOWS_BASEKIT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/7dff44ba-e3af-4448-841c-0d616c8da6e7/w_BaseKit_p_2024.1.0.595_offline.exe

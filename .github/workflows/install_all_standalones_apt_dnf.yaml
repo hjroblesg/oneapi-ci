@@ -1,0 +1,356 @@
+# SPDX-FileCopyrightText: 2022 Intel Corporation
+#
+# SPDX-License-Identifier: MIT
+
+name: install_apt
+
+on:
+  push: {}
+  workflow_dispatch: {}
+  schedule:
+    - cron: '0 0 * * *'
+
+env:
+  LINUX_COMPONENTS: "intel-oneapi-dev-utilities,intel-oneapi-dpcpp-ct,\
+    intel-oneapi-ipp-devel,intel-oneapi-ippcp-devel,intel-oneapi-ispc,\
+    intel-oneapi-mpi-devel,intel-oneapi-ccl-devel,intel-oneapi-dal-devel,\
+    intel-oneapi-dnnl-devel,intel-oneapi-mkl-devel,intel-oneapi-tbb-devel,\
+    intel-oneapi-libdpstd-devel,intel-oneapi-compiler-dpcpp-cpp,intel-oneapi-common-licensing,\
+    intel-oneapi-compiler-fortran,intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic,\
+    intel-oneapi-diagnostics-utility"
+  LINUX_ANALYZERS: "intel-oneapi-advisor,intel-oneapi-inspector,intel-oneapi-vtune,\
+    intel-oneapi-itac,intel-oneapi-dpcpp-debugger"
+  LINUX_RENDERKIT: "intel-oneapi-embree,intel-oneapi-oidn,intel-oneapi-openvkl,intel-oneapi-ospray,\
+    intel-oneapi-openpgl,intel-oneapi-ospray-studio,intel-oneapi-rkcommon,intel-oneapi-rkutil"
+  LINUX_FRAMEWORKS: "intel-oneapi-python,intel-oneapi-lpot,intel-oneapi-modin,intel-oneapi-condaindex,\
+    intel-oneapi-pytorch,intel-oneapi-tensorflow,intel-oneapi-model-zoo"
+  CACHE_NUMBER: 4
+  SAMPLES_TAG: 2024.0.0
+  COMPILER_VERSION: 2024.0.0
+  TBB_VERSION: 2021.12.0
+  VS_VER: vs2022
+
+jobs:
+  install_linux_apt_components_libs:
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup apt repo
+      run: scripts/setup_apt_repo_linux.sh
+    - name: collect versioned dependencies of apt packages
+      run: scripts/apt_depends.sh $LINUX_COMPONENTS | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          /opt/intel/oneapi
+        key: install-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+    - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/install_linux_apt.sh $LINUX_COMPONENTS
+    - name: exclude unused files from cache
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/cache_exclude_linux.sh
+
+  install_linux_apt_analyzers:
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup apt repo
+      run: scripts/setup_apt_repo_linux.sh
+    - name: collect versioned dependencies of apt packages
+      run: scripts/apt_depends.sh $LINUX_ANALYZERS | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          /opt/intel/oneapi
+        key: install-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+    - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/install_linux_apt.sh $LINUX_ANALYZERS
+    - name: exclude unused files from cache
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/cache_exclude_linux.sh
+
+  install_linux_apt_renderkit:
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup apt repo
+      run: scripts/setup_apt_repo_linux.sh
+    - name: collect versioned dependencies of apt packages
+      run: scripts/apt_depends.sh $LINUX_RENDERKIT | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          /opt/intel/oneapi
+        key: install-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+    - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/install_linux_apt.sh $LINUX_RENDERKIT
+    - name: exclude unused files from cache
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/cache_exclude_linux.sh
+
+  install_linux_apt_frameworks:
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup apt repo
+      run: scripts/setup_apt_repo_linux.sh
+    - name: collect versioned dependencies of apt packages
+      run: scripts/apt_depends.sh $LINUX_FRAMEWORKS | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          /opt/intel/oneapi
+        key: install-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+    - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/install_linux_apt.sh $LINUX_FRAMEWORKS
+    - name: exclude unused files from cache
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/cache_exclude_linux.sh
+
+  install_linux_dnf_components_libs:
+    runs-on: ubuntu-20.04
+    container: fedora:37
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: install prerequisites
+      run: scripts/install_prerequisites_linux_dnf.sh
+    - name: setup yum/dnf repo
+      run: scripts/setup_yum_dnf_repo_linux.sh
+    - name: collect versioned dependencies of dnf packages
+      run: scripts/dnf_depends.sh $LINUX_COMPONENTS | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          /opt/intel/oneapi
+        key: install-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+    - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/install_linux_dnf.sh $LINUX_COMPONENTS
+    - name: exclude unused files from cache
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/cache_exclude_linux.sh
+
+  install_linux_dnf_analyzers:
+    runs-on: ubuntu-20.04
+    container: fedora:37
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: install prerequisites
+      run: scripts/install_prerequisites_linux_dnf.sh
+    - name: setup yum/dnf repo
+      run: scripts/setup_yum_dnf_repo_linux.sh
+    - name: collect versioned dependencies of dnf packages
+      run: scripts/dnf_depends.sh $LINUX_ANALYZERS | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          /opt/intel/oneapi
+        key: install-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+    - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/install_linux_dnf.sh $LINUX_ANALYZERS
+    - name: exclude unused files from cache
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/cache_exclude_linux.sh
+
+  install_linux_dnf_renderkit:
+    runs-on: ubuntu-20.04
+    container: fedora:37
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: install prerequisites
+      run: scripts/install_prerequisites_linux_dnf.sh
+    - name: setup yum/dnf repo
+      run: scripts/setup_yum_dnf_repo_linux.sh
+    - name: collect versioned dependencies of dnf packages
+      run: scripts/dnf_depends.sh $LINUX_RENDERKIT | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          /opt/intel/oneapi
+        key: install-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+    - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/install_linux_dnf.sh $LINUX_RENDERKIT
+    - name: exclude unused files from cache
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/cache_exclude_linux.sh
+
+  install_linux_dnf_frameworks:
+    runs-on: ubuntu-20.04
+    container: fedora:37
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - uses: actions/checkout@v2
+    - name: install prerequisites
+      run: scripts/install_prerequisites_linux_dnf.sh
+    - name: setup yum/dnf repo
+      run: scripts/setup_yum_dnf_repo_linux.sh
+    - name: collect versioned dependencies of dnf packages
+      run: scripts/dnf_depends.sh $LINUX_FRAMEWORKS | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          /opt/intel/oneapi
+        key: install-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+    - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/install_linux_dnf.sh $LINUX_FRAMEWORKS
+    - name: exclude unused files from cache
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/cache_exclude_linux.sh
+
+  install_linux_zypper_components_libs:
+    runs-on: ubuntu-20.04
+    container: opensuse/leap
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: Install actions/checkout requirements
+      run:  |
+        zypper install -y tar gzip
+    - uses: actions/checkout@v2
+    - name: install prerequisites
+      run: scripts/install_prerequisites_linux_zypper.sh
+    - name: setup zypper repo
+      run: scripts/setup_zypper_repo_linux.sh
+    - name: collect versioned dependencies of zypper packages
+      run: scripts/zypper_depends.sh $LINUX_COMPONENTS $SAMPLES_TAG | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          /opt/intel/oneapi
+        key: install-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+    - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/install_linux_zypper.sh $LINUX_COMPONENTS
+
+  install_linux_zypper_analyzers:
+    runs-on: ubuntu-20.04
+    container: opensuse/leap
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: Install actions/checkout requirements
+      run:  |
+        zypper install -y tar gzip
+    - uses: actions/checkout@v2
+    - name: install prerequisites
+      run: scripts/install_prerequisites_linux_zypper.sh
+    - name: setup zypper repo
+      run: scripts/setup_zypper_repo_linux.sh
+    - name: collect versioned dependencies of zypper packages
+      run: scripts/zypper_depends.sh $LINUX_ANALYZERS $SAMPLES_TAG | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          /opt/intel/oneapi
+        key: install-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+    - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/install_linux_zypper.sh $LINUX_ANALYZERS
+
+  install_linux_zypper_renderkit:
+    runs-on: ubuntu-20.04
+    container: opensuse/leap
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: Install actions/checkout requirements
+      run:  |
+        zypper install -y tar gzip
+    - uses: actions/checkout@v2
+    - name: install prerequisites
+      run: scripts/install_prerequisites_linux_zypper.sh
+    - name: setup zypper repo
+      run: scripts/setup_zypper_repo_linux.sh
+    - name: collect versioned dependencies of zypper packages
+      run: scripts/zypper_depends.sh $LINUX_RENDERKIT $SAMPLES_TAG | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          /opt/intel/oneapi
+        key: install-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+    - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/install_linux_zypper.sh $LINUX_RENDERKIT
+
+  install_linux_zypper_frameworks:
+    runs-on: ubuntu-20.04
+    container: opensuse/leap
+    defaults:
+      run:
+        shell: bash
+    steps:
+    - name: Install actions/checkout requirements
+      run:  |
+        zypper install -y tar gzip
+    - uses: actions/checkout@v2
+    - name: install prerequisites
+      run: scripts/install_prerequisites_linux_zypper.sh
+    - name: setup zypper repo
+      run: scripts/setup_zypper_repo_linux.sh
+    - name: collect versioned dependencies of zypper packages
+      run: scripts/zypper_depends.sh $LINUX_FRAMEWORKS $SAMPLES_TAG | tee depends.txt
+    - name: cache install
+      id: cache-install
+      uses: actions/cache@v2
+      with:
+        path: |
+          /opt/intel/oneapi
+        key: install-${{ hashFiles('**/depends.txt') }}-compiler-${{ hashFiles('**/scripts/cache_exclude_linux.sh') }}
+    - name: install
+      if: steps.cache-install.outputs.cache-hit != 'true'
+      run: scripts/install_linux_zypper.sh $LINUX_FRAMEWORKS
