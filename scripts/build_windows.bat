@@ -47,6 +47,7 @@ set /a RESULT=%RESULT%+%ERRORLEVEL%
 goto exit
 
 :dpcpp
+set SYCL_DEVICE_TYPE=CPU
 for /f "tokens=* usebackq" %%f in (`dir /b "C:\Program Files (x86)\Intel\oneAPI\tbb\" ^| findstr /V latest ^| sort`) do @set "LATEST_VERSION=%%f"
 @call "C:\Program Files (x86)\Intel\oneAPI\tbb\%LATEST_VERSION%\env\vars.bat"
 cd oneAPI-samples\DirectProgramming\C++SYCL\DenseLinearAlgebra\vector-add
