@@ -11,32 +11,31 @@ on:
     - cron: '0 0 * * *'
 
 env:
-  LINUX_COMPILER_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/5c8e686a-16a7-4866-b585-9cf09e97ef36/l_dpcpp-cpp-compiler_p_2024.0.0.49524.sh
-  LINUX_FORTRAN_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/0d65c8d4-f245-4756-80c4-6712b43cf835/l_fortran-compiler_p_2023.2.1.8.sh
-  LINUX_ADVISOR_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/88c5bdaa-7a2d-491f-9871-7170fadc3d52/l_oneapi_advisor_p_2024.0.0.49522.sh
-  LINUX_GDB_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/afb921d3-c9e7-4610-b3a9-725c77a87cf4/l_dpcpp_dbg_p_2024.0.0.49350.sh
-  LINUX_INSPECTOR_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/44ae6846-719c-49bd-b196-b16ce5835a1e/l_inspector_oneapi_p_2024.0.0.49433.sh
-  LINUX_ITAC_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/e83526f5-7e0f-4708-9e0d-47f1e65f29aa/l_itac_oneapi_p_2022.0.0.49690.sh
-  LINUX_VTUNE_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/1722cc83-ceb2-4304-b4dc-2813780222a3/l_oneapi_vtune_p_2024.0.0.49503.sh
-  LINUX_DPCPPCT_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/6633bc4b-5356-471a-9aae-d5e63e7acd95/l_dpcpp-ct_p_2024.0.0.49394.sh
-  LINUX_ISPC_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/b995d3ed-bad9-4010-9f43-c9a5168f39c0/l_ispc_p_2024.0.0.49655.sh
-  LINUX_IPYTHON_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/ff472309-514b-45d7-826b-2da3669b89a5/intelpython3-2024.0.0_251-Linux-x86_64.sh
-  LINUX_IPP_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/2d48c7d9-e716-4c73-8fe5-77a9599a405f/l_ipp_oneapi_p_2021.10.0.670.sh
-  LINUX_IPPCP_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/6792a758-2d69-4ff3-ad24-233fb3bf56e4/l_ippcp_oneapi_p_2021.9.0.533.sh
-  LINUX_MPI_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/2c45ede0-623c-4c8e-9e09-bed27d70fa33/l_mpi_oneapi_p_2021.11.0.49513.sh
-  LINUX_CCL_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/9e63eba5-2b3d-4032-ad22-21f02e35b518/l_oneapi_ccl_p_2021.11.0.49161.sh
-  LINUX_DNNL_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/dc309221-d210-4f3a-9406-d897df8deab8/l_onednn_p_2024.0.0.49548.sh
-  LINUX_DPL_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/be027095-148a-4433-aff4-c6e8582da3ca/l_oneDPL_p_2022.3.0.49386.sh
-  LINUX_MKL_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/86d6a4c1-c998-4c6b-9fff-ca004e9f7455/l_onemkl_p_2024.0.0.49673.sh
-  LINUX_TBB_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/af3ad519-4c87-4534-87cb-5c7bda12754e/l_tbb_oneapi_p_2021.11.0.49527.sh
-  LINUX_EMBREE_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/9fe5d278-c4a2-47f4-9854-f8033a95a8cc/l_embree_p_2024.0.0.49637.sh
-  LINUX_OIDN_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/2c9802ab-dcba-4960-b6c6-70705d611c1a/l_oidn_p_2024.0.0.49651.sh
-  LINUX_OPGL_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/9ebb12d3-904a-402c-aa22-baf11d73e85b/l_openpgl_p_2024.0.0.49633.sh
-  LINUX_OVKL_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/2aaa3113-7e60-48be-a52b-698794e936a7/l_openvkl_p_2024.0.0.49638.sh
-  LINUX_OSPRAY_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/28fe3f1a-a8a7-4c6b-b504-33bc1015f063/l_ospray_p_2024.0.0.49631.sh
-  LINUX_OSPRAYSTD_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/6f50b67d-3c05-40cf-9372-7d164aba299b/l_ospray_studio_p_2024.0.0.49629.sh
+  LINUX_COMPILER_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/2e562b6e-5d0f-4001-8121-350a828332fb/l_dpcpp-cpp-compiler_p_2024.1.0.468_offline.sh
+  LINUX_FORTRAN_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/fd9342bd-7d50-442c-a3e4-f41974e14396/l_fortran-compiler_p_2024.1.0.465_offline.sh
+  LINUX_ADVISOR_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/414cea14-4f3c-45f0-b854-44fb6cf9f34b/l_oneapi_advisor_p_2024.1.0.500_offline.sh
+  LINUX_GDB_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/fc87666c-d626-47bc-a861-a1578d2ecbd3/l_dpcpp_dbg_p_2024.1.0.439_offline.sh
+  LINUX_INSPECTOR_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/891acaab-a5b4-4a3c-9f36-60dca629e410/l_inspector_oneapi_p_2024.1.0.158_offline.sh
+  LINUX_ITAC_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/644eec67-83d9-4bdd-be0d-d90587ec72ed/l_itac_oneapi_p_2022.1.0.158_offline.sh
+  LINUX_VTUNE_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/671388a1-607e-463c-8d91-db4eebc2e8d2/l_oneapi_vtune_p_2024.1.0.519_offline.sh
+  LINUX_DPCPPCT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/997fe522-cedf-46da-a54d-be4f22992fa1/l_dpcpp-ct_p_2024.1.0.378_offline.sh
+  LINUX_ISPC_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/ad98ac2b-d98a-4e86-804a-b6f30870ef6c/l_ispc_p_2024.1.0.726_offline.sh
+  LINUX_IPP_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/c8d09493-ca9b-45b1-b720-12b8719b4136/l_ipp_oneapi_p_2021.11.0.532_offline.sh
+  LINUX_IPPCP_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/a28fefdf-f67e-43a9-8e42-fcccd9da1fff/l_ippcp_oneapi_p_2021.11.0.37_offline.sh
+  LINUX_MPI_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/749f02a5-acb8-4bbb-91db-501ff80d3f56/l_mpi_oneapi_p_2021.12.0.538_offline.sh
+  LINUX_CCL_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/cad4b3be-a272-4ed0-b67a-3871e495cb28/l_oneapi_ccl_p_2021.12.0.311_offline.sh
+  LINUX_DNNL_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/759e8b2a-cbff-4b4f-ad88-08deb7730e73/l_onednn_p_2024.1.0.571_offline.sh
+  LINUX_DPL_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/d0be9e37-532e-4fde-9ac2-32c3ec5a2029/l_oneDPL_p_2022.5.0.219_offline.sh
+  LINUX_MKL_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/2f3a5785-1c41-4f65-a2f9-ddf9e0db3ea0/l_onemkl_p_2024.1.0.695_offline.sh
+  LINUX_TBB_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/b31f6b79-10aa-4119-a437-48fe2775633b/l_tbb_oneapi_p_2021.12.0.499_offline.sh
+  LINUX_EMBREE_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/ba5dfc84-3daa-4757-af99-76c8f0f04338/l_embree_p_2024.1.0.711_offline.sh
+  LINUX_OIDN_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/bc3a04c5-4758-4300-a002-5bbeac1f7e90/l_oidn_p_2024.1.0.696_offline.sh
+  LINUX_OPGL_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/93bda2c5-5a43-4ea5-883e-1df4f9824084/l_openpgl_p_2024.1.0.727_offline.sh
+  LINUX_OVKL_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/ecc16b93-de13-4847-b0d2-b43e8f4c2ced/l_openvkl_p_2024.1.0.730_offline.sh
+  LINUX_OSPRAY_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/e92f024a-4a6b-4bac-9d6e-92aa68c51f2b/l_ospray_p_2024.1.0.736_offline.sh
+  LINUX_OSPRAYSTD_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/1053f387-81d7-4edf-9cc3-10b744ee6110/l_ospray_studio_p_2024.1.0.707_offline.sh
   LINUX_COMPONENTS: intel-oneapi-dpcpp-cpp-compiler,intel-oneapi-compiler-fortran,intel-oneapi-vtune
-  SAMPLES_TAG: 2024.0.0
+  SAMPLES_TAG: 2024.1.0
 
 jobs:
   build_linux_compiler_online:
@@ -237,29 +236,6 @@ jobs:
         sudo traceroute --tcp registrationcenter-download.intel.com
     - name: install_ispc
       run: scripts/install_linux.sh $LINUX_ISPC_URL
-    - name: Saving install logs
-      if: ${{ always() }}
-      uses: actions/upload-artifact@v2
-      with:
-        name: InstallLogs_${{ github.job }}
-        path: |
-          bootstrapper*
-          installer*
-        retention-days: 7
-
-  build_linux_ipython_online:
-    runs-on: ubuntu-20.04
-    defaults:
-      run:
-        shell: bash
-    steps:
-    - uses: actions/checkout@v2
-    - name: traceroute
-      run: |
-        sudo apt-get install -y traceroute
-        sudo traceroute --tcp registrationcenter-download.intel.com
-    - name: install_ipython
-      run: scripts/install_linux_aitools.sh $LINUX_IPYTHON_URL
     - name: Saving install logs
       if: ${{ always() }}
       uses: actions/upload-artifact@v2

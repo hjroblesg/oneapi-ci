@@ -24,9 +24,9 @@ env:
     intel-oneapi-openpgl,intel-oneapi-ospray-studio,intel-oneapi-rkcommon,intel-oneapi-rkutil"
   LINUX_FRAMEWORKS: "intel-oneapi-python,intel-oneapi-lpot,intel-oneapi-modin,intel-oneapi-condaindex,\
     intel-oneapi-pytorch,intel-oneapi-tensorflow,intel-oneapi-model-zoo"
-  CACHE_NUMBER: 4
-  SAMPLES_TAG: 2024.0.0
-  COMPILER_VERSION: 2024.0.0
+  CACHE_NUMBER: 5
+  SAMPLES_TAG: 2024.1.0
+  COMPILER_VERSION: 2024.1.0
   TBB_VERSION: 2021.12.0
   VS_VER: vs2022
 

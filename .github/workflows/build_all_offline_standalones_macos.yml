@@ -11,14 +11,14 @@ on:
     - cron: '0 0 * * *'
 
 env:
-  MACOS_ISPC_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/fd7d2ab7-821f-4819-9517-87fbe29690e5/m_ispc_p_2023.2.0.49482_offline.dmg
-  MACOS_EMBREE_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/dd37fca9-4a4d-44aa-8a62-d6607bcba698/m_embree_p_2023.2.0.49419_offline.dmg
-  MACOS_OIDN_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/2eea4397-5b4e-42e9-80cc-c4d18d9d175f/m_oidn_p_2023.2.0.49419_offline.dmg
-  MACOS_OPGL_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/313d8b1d-4050-4ad6-ad43-5ecc008f6f95/m_openpgl_p_2023.2.0.49413_offline.dmg
-  MACOS_OVKL_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/f5d4165c-2549-45ef-8a01-cce00faa26ec/m_openvkl_p_2023.2.0.49401_offline.dmg
-  MACOS_OSPRAY_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/88d9fcf8-18f3-416a-9e01-00e33bd85dc4/m_ospray_p_2023.2.0.49394_offline.dmg
-  MACOS_OSPRAYSTD_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/84e00915-9ae4-411f-8cda-d06522bc49f7/m_ospray_studio_p_2023.2.0.49380_offline.dmg
-  SAMPLES_TAG: 2024.0.0
+  MACOS_ISPC_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/04fba3d6-15ed-4c71-938b-d29d0811461a/m_ispc_p_2024.1.0.727_offline.dmg
+  MACOS_EMBREE_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/cae476a0-3975-4752-b4ef-222bf746b0ef/m_embree_p_2024.1.0.712_offline.dmg
+  MACOS_OIDN_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/d3ae4881-54ac-436b-a01b-20e9502be9b8/m_oidn_p_2024.1.0.697_offline.dmg
+  MACOS_OPGL_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/d0986691-f49a-4768-936c-b0baffa98a53/m_openpgl_p_2024.1.0.728_offline.dmg
+  MACOS_OVKL_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/2a8b0a62-1dce-418b-965f-30255b49d604/m_openvkl_p_2024.1.0.731_offline.dmg
+  MACOS_OSPRAY_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/fe0bc466-3de5-4448-a0b1-7d2677e26ba9/m_ospray_p_2024.1.0.737_offline.dmg
+  MACOS_OSPRAYSTD_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/f71b24b6-dcd1-4217-94fc-a00ad7f55b22/m_ospray_studio_p_2024.1.0.708_offline.dmg
+  SAMPLES_TAG: 2024.1.0
 
 jobs:
   build_macos_ispc:

@@ -11,30 +11,29 @@ on:
     - cron: '0 0 * * *'
 
 env:
-  WINDOWS_COMPILER_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/e652237e-8aa3-4028-bbd2-f4e2548dddb8/w_dpcpp-cpp-compiler_p_2024.0.0.49523_offline.exe
-  WINDOWS_FORTRAN_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/5e411842-8348-40cd-81f6-df193c321611/w_fortran-compiler_p_2024.0.0.49492_offline.exe
-  WINDOWS_ADVISOR_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/344f8dce-1fc1-4186-98d4-efd4e61e9411/w_oneapi_advisor_p_2024.0.0.49521_offline.exe
-  WINDOWS_GDB_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/ba5f365c-7679-422a-b9cb-cf552fde0782/w_dpcpp_dbg_p_2024.0.0.49349_offline.exe
-  WINDOWS_INSPECTOR_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/ab391805-ef67-48e8-9ba1-12992ef5d2ad/w_inspector_oneapi_p_2024.0.0.49432_offline.exe
-  WINDOWS_ITAC_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/57b0e83c-09a9-4346-a4c0-b899569d451c/w_itac_oneapi_p_2022.0.0.49689_offline.exe
-  WINDOWS_VTUNE_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/4c53caf0-52e6-4a99-bc69-71cdd2ce5d22/w_oneapi_vtune_p_2024.0.0.49502_offline.exe
-  WINDOWS_DPCPPCT_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/383fe21a-66d8-4e53-9cdc-180fdf20eb5a/w_dpcpp-ct_p_2024.0.0.49392_offline.exe
-  WINDOWS_ISPC_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/99cee363-ae82-4377-8da3-1066b6bf62c2/w_ispc_p_2024.0.0.49654_offline.exe
-  WINDOWS_IDP_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/7d38b493-18f7-45bf-96db-b5ad3c98e38e/intelpython3-2024.0.0_279-Windows-x86_64.exe
-  WINDOWS_IPP_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/b68464de-ccf2-4e1e-8caa-230648f4a933/w_ipp_oneapi_p_2021.10.0.669_offline.exe
-  WINDOWS_IPPCP_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/f48faa51-8b35-4ec2-a474-3f9d8f8feb32/w_ippcp_oneapi_p_2021.9.0.532_offline.exe
-  WINDOWS_MPI_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/b7596581-64db-4820-bcfe-74ad9f5ec657/w_mpi_oneapi_p_2021.11.0.49512_offline.exe
-  WINDOWS_DNNL_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/31abd755-b114-49f7-a58f-e8a436258fe5/w_onednn_p_2024.0.0.49547_offline.exe
-  WINDOWS_MKL_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/b5a4ff98-2c98-4b28-87f7-32082cac359e/w_onemkl_p_2024.0.0.49672_offline.exe
-  WINDOWS_DPL_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/18d7734d-3957-4305-aca9-58f86d5aeee0/w_oneDPL_p_2022.3.0.49385_offline.exe
-  WINDOWS_TBB_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/64957c0f-37bf-4408-909c-37ff52fe5119/w_tbb_oneapi_p_2021.11.0.49526_offline.exe
-  WINDOWS_EMBREE_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/caef62e8-ce54-48e9-8eda-3eb3e9606b99/w_embree_p_2024.0.0.49636_offline.exe
-  WINDOWS_OIDN_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/ceb5bfaf-5a50-4866-9806-5b2a6d11fce8/w_oidn_p_2024.0.0.49650_offline.exe
-  WINDOWS_OPGL_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/88d1a37a-f52a-4034-841c-4e389598aa3a/w_openpgl_p_2024.0.0.49631_offline.exe
-  WINDOWS_OVKL_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/08934190-379e-41c6-9359-cae67c37dc07/w_openvkl_p_2024.0.0.49637_offline.exe
-  WINDOWS_OSPRAY_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/247851bf-eb98-4573-9bca-2556364d963b/w_ospray_p_2024.0.0.49630_offline.exe
-  WINDOWS_OSPRAYSTD_URL: https://registrationcenter-download.intel.com/akdlm//IRC_NAS/d72b11af-b4df-46cc-ab99-73c828ed7cdf/w_ospray_studio_p_2024.0.0.49628_offline.exe
-  SAMPLES_TAG: 2024.0.0
+  WINDOWS_COMPILER_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/a1d6c917-05ab-4883-b67b-4bd60abb74e5/w_dpcpp-cpp-compiler_p_2024.1.0.469_offline.exe
+  WINDOWS_FORTRAN_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/f6a44238-5cb6-4787-be83-2ef48bc70cba/w_fortran-compiler_p_2024.1.0.466_offline.exe
+  WINDOWS_ADVISOR_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/ea829a99-dd1b-4c63-96d8-7bac9eca57a3/w_oneapi_advisor_p_2024.1.0.498_offline.exe
+  WINDOWS_GDB_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/59b83c91-a486-4647-9c2b-b8722d3d9134/w_dpcpp_dbg_p_2024.1.0.440_offline.exe
+  WINDOWS_INSPECTOR_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/9cfd5f59-4dcd-4b0c-8b62-9fe7589dcd1c/w_inspector_oneapi_p_2024.1.0.157_offline.exe
+  WINDOWS_ITAC_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/853bc765-526b-4633-ae07-7eaaa47a42ec/w_itac_oneapi_p_2022.1.0.157_offline.exe
+  WINDOWS_VTUNE_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/7a0925fe-698d-4ad9-9f61-8a86a0f8791e/w_oneapi_vtune_p_2024.1.0.520_offline.exe
+  WINDOWS_DPCPPCT_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/e92b996c-6a8d-40e1-b506-50eda52f0010/w_dpcpp-ct_p_2024.1.0.379_offline.exe
+  WINDOWS_ISPC_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/8fc0285c-da26-4c8f-9766-6ff9778ddc82/w_ispc_p_2024.1.0.728_offline.exe
+  WINDOWS_IPP_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/b4adec02-353b-4144-aa21-f2087040f316/w_ipp_oneapi_p_2021.11.0.533_offline.exe
+  WINDOWS_IPPCP_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/8c01802f-9670-4c74-aaae-81e59c258af3/w_ippcp_oneapi_p_2021.11.0.38_offline.exe
+  WINDOWS_MPI_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/fab706bb-ca1e-4cc9-b76a-a12df3cc984e/w_mpi_oneapi_p_2021.12.0.539_offline.exe
+  WINDOWS_DNNL_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/fa839704-2ccf-4100-a48b-64b60f51db3d/w_onednn_p_2024.1.0.572_offline.exe
+  WINDOWS_MKL_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/78da61ee-8ded-4aab-8964-fea48243b05e/w_onemkl_p_2024.1.0.696_offline.exe
+  WINDOWS_DPL_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/998a4dbd-f0d2-4242-b3cb-1e4bf329dcd8/w_oneDPL_p_2022.5.0.220_offline.exe
+  WINDOWS_TBB_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/c0b87e5c-1e1f-431f-b26e-dc250032e586/w_tbb_oneapi_p_2021.12.0.500_offline.exe
+  WINDOWS_EMBREE_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/2ceb1087-22a4-473b-a522-694a9c3205af/w_embree_p_2024.1.0.713_offline.exe
+  WINDOWS_OIDN_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/25266925-1e4e-4d3a-a95c-f88a3356d300/w_oidn_p_2024.1.0.698_offline.exe
+  WINDOWS_OPGL_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/185080fa-3b66-4a3f-99e6-0e9078204a46/w_openpgl_p_2024.1.0.729_offline.exe
+  WINDOWS_OVKL_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/7d3c2464-984f-4a4e-8795-aafa6f0c35c1/w_openvkl_p_2024.1.0.732_offline.exe
+  WINDOWS_OSPRAY_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/73103f4b-70bf-47a7-a025-25bdf6a73150/w_ospray_p_2024.1.0.738_offline.exe
+  WINDOWS_OSPRAYSTD_URL: https://registrationcenter-download.intel.com/akdlm/IRC_NAS/9d83093e-b984-4f97-8683-ad906bc650c5/w_ospray_studio_p_2024.1.0.709_offline.exe
+  SAMPLES_TAG: 2024.1.0
 
 jobs:
   build_compiler_windows:
@@ -242,30 +241,6 @@ jobs:
       run: tracert -h 1 installer.repos.intel.com
     - name: install_ispc
       run: scripts/install_windows.bat $WINDOWS_ISPC_URL
-
-    - name: Saving install logs
-      if: ${{ always() }}
-      uses: actions/upload-artifact@v2
-      with:
-        name: InstallLogs_${{ github.job }}
-        path: |
-          extract.log
-          bootstrapper*
-          installer*
-        retention-days: 7
-
-  build_idp_windows:
-    runs-on: windows-latest
-    timeout-minutes: 90
-    defaults:
-      run:
-        shell: bash
-    steps:
-    - uses: actions/checkout@v2
-    - name: tracert
-      run: tracert -h 1 installer.repos.intel.com
-    - name: install_idp
-      run: scripts/install_windows.bat $WINDOWS_IDP_URL
 
     - name: Saving install logs
       if: ${{ always() }}
